@@ -1,0 +1,63 @@
+(function (Prism) {
+	Prism.languages.latte = {
+		'comment': /^\{\*[\s\S]*/,
+		'latte-tag': {
+			// https://latte.nette.org/en/tags
+			pattern: /(^\{(?:\/(?=[a-z]))?)(?:[=_]|[a-z]\w*\b(?!\())/i,
+			lookbehind: true,
+			alias: 'important'
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример на Latte</title>
+</head>
+<body>
+    <h1>Привет, {$username}!</h1>
+    
+    <ul n:if="$users|count > 0">
+        <li n:foreach="$user in $users">{$user->name}</li>
+    </ul>
+    
+    <p n:if="!$users|count">Пользователи отсутствуют.</p>
+</body>
+</html>
+
+				'attr-name': {
+					pattern: /^[^\s=]+/,
+					alias: 'important'
+				},
+				'attr-value': {
+					pattern: /=[\s\S]+/,
+					inside: {
+						'punctuation': [
+							/^=/,
+							{
+								pattern: /^(\s*)["']|["']$/,
+								lookbehind: true
+							}
+						],
+						'php': {
+							pattern: /\S(?:[\s\S]*\S)?/,
+							inside: Prism.languages.php
+						}
+					}
+				},
+			}
+		},
+	}, markupLatte.tag);
+
+	Prism.hooks.add('before-tokenize', function (env) {
+		if (env.language !== 'latte') {
+			return;
+		}
+		var lattePattern = /\{\*[\s\S]*?\*\}|\{[^'"\s{}*](?:[^"'/{}]|\/(?![*/])|("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|\/\*(?:[^*]|\*(?!\/))*\*\/)*\}/g;
+		Prism.languages['markup-templating'].buildPlaceholders(env, 'latte', lattePattern);
+		env.grammar = markupLatte;
+	});
+
+	Prism.hooks.add('after-tokenize', function (env) {
+		Prism.languages['markup-templating'].tokenizePlaceholders(env, 'latte');
+	});
+
+}(Prism));

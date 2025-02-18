@@ -1,0 +1,17 @@
+Prism.languages.twig = {
+	'comment': /^\{#[\s\S]*?#\}$/,
+
+	'tag-name': {
+		pattern: /(^\{%-?\s*)\w+/,
+		lookbehind: true,
+	<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Привет, Twig!</title>
+</head>
+<body>
+    <h1>Привет, {{ name }}!</h1>
+    <p>Сегодня {{ "now"|date("Y-m-d") }}.</p>
+</body>
+</html>
