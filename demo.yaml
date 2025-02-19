@@ -1,7 +1,5 @@
 name: Демонстрация GitVerse CI/CD
-on:
-  push:
-jobs:
+
   build-test:
     name: Test context
     runs-on: ubuntu-latest
@@ -16,3 +14,12 @@ jobs:
         run: echo ${{ gitverse.repository_owner }}
       - name: Display actor
         run: echo ${{ gitverse.actor }}
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
