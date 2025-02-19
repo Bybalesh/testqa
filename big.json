@@ -32,26 +32,9 @@
         "eslint-config-prettier": "^8.0.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-n": "^16.6.2",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-promise": "^6.1.1",
-        "eslint-plugin-unicorn": "^50.0.0",
-        "jest": "^29.7.0",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^2.8.8",
-        "ts-jest": "^29.1.1",
-        "typescript": "^4.9.5"
-      }
+        "e
     },
-    "node_modules/@aashutoshrathi/word-wrap": {
-      "version": "1.2.6",
-      "resolved": "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz",
-      "integrity": "sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==",
-      "dev": true,
-      "engines": {
-        "node": ">=0.10.0"
-      }
-    },
-    "node_modules/@ampproject/remapping": {
+  apping": {
       "version": "2.2.1",
       "resolved": "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.1.tgz",
       "integrity": "sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==",
@@ -102,6 +85,94 @@
       "engines": {
         "node": ">=4"
       }
+	
+43
+
+	'string-operator': {
+
+
+	
+44
+
+		pattern: /(\s)&&?(?=\s)/,
+
+
+	
+45
+
+		lookbehind: true,
+
+
+	
+46
+
+		/* The official editor highlights */
+
+
+	
+47
+
+		alias: 'keyword'
+
+
+	
+48
+
+	},
+
+
+	
+49
+
+	'token-operator': [{
+
+
+	
+50
+
+		/* Special operators used to access structure components, class methods/attributes, etc. */
+
+
+	
+51
+
+		pattern: /(\w)(?:->?|=>|[~|{}])(?=\w)/,
+
+
+	
+52
+
+		lookbehind: true,
+
+
+	
+53
+
+		alias: 'punctuation'
+
+
+	
+54
+
+	}, {
+
+
+	
+55
+
+		/* Special tokens used do delimit string templates */
+
+
+	
+56
+
+		pattern: /[|{}]/,
+
+
+	
+57
+
+		alias: 'punctuation'
     },
     "node_modules/@babel/code-frame/node_modules/color-convert": {
       "version": "1.9.3",
