@@ -301,17 +301,13 @@ Markdown | Less | Pretty
 | `git status` | List all *new or modified* files |
 | `git diff` | Show file differences that **haven't been** staged |
 
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
 
-| Name     | Character |
-| ---      | ---       |
-| Backtick | `         |
-| Pipe     | \|        |
-
-```bash
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
 db_verifier=# \pset format wrapped
 Output format is wrapped.
 db_verifier=# \pset columns 0
